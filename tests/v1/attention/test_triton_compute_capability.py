@@ -26,8 +26,6 @@ from vllm.v1.attention.backends.triton_attn import TritonAttentionBackend
         (DeviceCapability(9, 0), True),  # H100
     ],
 )
-def test_triton_attn_compute_capability(
-    capability: DeviceCapability, expected: bool
-):
+def test_triton_attn_compute_capability(capability: DeviceCapability, expected: bool):
     """Triton attention should only support SM >= 80 GPUs."""
     assert TritonAttentionBackend.supports_compute_capability(capability) == expected
